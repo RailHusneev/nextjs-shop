@@ -5,7 +5,7 @@ import { UserWidget } from "@components/widgets/user/user";
 import { CartWidget } from "@components/widgets/cart/cart";
 import Image from "next/image";
 
-import Logo from "@assets/logo.jpg";
+import Logo from "@assets/logo.svg";
 
 type PropsType = {};
 
@@ -18,7 +18,7 @@ export const Header: FC<PropsType> = () => {
       padding="20px 10px"
     >
       <Flex width="100%" alignItems={"center"}>
-        <Image width={150} height={30} src={Logo} />{" "}
+        <Image width={90} height={30} src={Logo} />{" "}
         <Box ml={50} flex={1}>
           <Navigation />
         </Box>
