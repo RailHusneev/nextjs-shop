@@ -1,0 +1,18 @@
+@mixin productSliderButton {
+  position: absolute;
+  font-size: 24px;
+  z-index: 2;
+  top: 60px;
+  cursor: pointer;
+}
+
+.productPrevButtonForSlider {
+  @include productSliderButton;
+  left: -30px;
+  transform: rotate(180deg);
+}
+
+.productNextButtonForSlider {
+  @include productSliderButton;
+  right: -30px;
+}
