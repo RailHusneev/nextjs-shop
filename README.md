@@ -1,5 +1,5 @@
 # nextjs-shop
-Simple example of typescript project with nextjs-chakraui-hookstate-nextauth stack
+Simple example of typescript project with nextjs-chakraui-hookstate-nextauth stack with persistence in store
 
 # Preview
 ![image](https://user-images.githubusercontent.com/69416603/146674228-82331fa9-5b62-4f6c-852f-afced1095fe4.png)
