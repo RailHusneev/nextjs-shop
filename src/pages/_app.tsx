@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 
 import "swiper/css";
 import "swiper/css/bundle";
@@ -13,9 +14,11 @@ import { theme } from "@src/libs/theme";
 export const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme}>
-      <CommonLayout>
-        <Component {...pageProps} />
-      </CommonLayout>
+      <SessionProvider session={pageProps.session}>
+        <CommonLayout>
+          <Component {...pageProps} />
+        </CommonLayout>
+      </SessionProvider>
     </ChakraProvider>
   );
 };

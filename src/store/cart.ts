@@ -1,28 +1,23 @@
 import { useToast } from "@chakra-ui/react";
-import { useState, createState } from "@hookstate/core";
-import { Persistence } from '@hookstate/persistence';
+import { useState, createState, none } from "@hookstate/core";
+import { Persistence } from "@hookstate/persistence";
 import { CartProductType, ProductType } from "@src/types/productType";
 
-type CartStateType = {
-  items: Array<CartProductType>;
-};
 
-export const cartState = createState<CartStateType>({
-  items: [],
-});
+export const cartState = createState<CartProductType[]>([]);
 
 export const useCart = () => {
   const state = useState(cartState);
 
   if (typeof window !== "undefined") {
-    state.attach(Persistence('plugin-persisted-data-key'))
+    cartState.attach(Persistence('store'))
   }
 
   const toast = useToast();
 
   const addToCart = (product: ProductType) => {
     const cartItemId = Date.now();
-    state.items.merge([{ ...product, cartItemId }]);
+    state.merge([{ ...product, cartItemId }]);
     toast({
       title: `Added ${product.title} to the cart!`,
       status: "success",
@@ -31,11 +26,11 @@ export const useCart = () => {
   };
 
   const removeFromCart = (cartItemId: number) => {
-    const currentState = state.items.get();
-    const newCartItems = currentState.filter(
-      (product) => product.cartItemId !== cartItemId
-    );
-    state.items.set(newCartItems);
+    state.keys.forEach((index) => {
+      if (state[index].cartItemId.get() === cartItemId) {
+        state[index].set(none);
+      }
+    });
     toast({
       title: `Removed from the cart!`,
       status: "success",
@@ -43,12 +38,12 @@ export const useCart = () => {
     });
   };
 
-  const cartTotalPrice = state.items
+  const cartTotalPrice = state
     .get()
-    .reduce((acc, product) => acc + product.price, 0);
+    .reduce((acc, product) => acc + product.price || 0, 0);
 
-  const cartItems = state.items.get();
-  const cartItemsCount = state.items.get().length;
+  const cartItems = state.get();
+  const cartItemsCount = state.get().length;
 
   return {
     addToCart,

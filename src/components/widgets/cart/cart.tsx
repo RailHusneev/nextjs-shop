@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import {
   Box,
+  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -37,12 +38,12 @@ export const CartWidget: FC<PropsType> = () => {
 
   return (
     <>
-      <Flex alignItems={"center"} fontWeight="medium" onClick={onToggle}>
+      <Button alignItems={"center"} fontWeight="medium" size="sm" onClick={onToggle}>
         <Box mr={2} color="blue.500">
           <FaShoppingCart />
         </Box>
         Basket ({cartItemsCount})
-      </Flex>
+      </Button>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
