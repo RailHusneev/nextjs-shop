@@ -10,10 +10,16 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 type PropsType = {
   products: ProductType[];
   description: string;
+  full_description: string;
   title: string;
 };
 
-export const Category: FC<PropsType> = ({ products, description, title }) => {
+export const Category: FC<PropsType> = ({
+  products,
+  full_description,
+  description,
+  title,
+}) => {
   const PRODUCTS_IN_SLIDE = 12;
 
   if (products.length === 0) {
@@ -55,6 +61,10 @@ export const Category: FC<PropsType> = ({ products, description, title }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Text mt={10} noOfLines={7}>
+        {full_description}
+      </Text>
     </Box>
   );
 };

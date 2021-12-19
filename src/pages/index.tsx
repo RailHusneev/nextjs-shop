@@ -38,6 +38,7 @@ export const HomePage: FC<PropsType> = () => {
             products={activeCategory.items}
             title={activeCategory.title}
             description={activeCategory.description}
+            full_description={activeCategory.full_description}
           />
         </Box>
       </Flex>
