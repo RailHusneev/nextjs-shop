@@ -5,3 +5,5 @@ export type ProductType = {
   description: string;
   img: StaticImageData;
 };
+
+export type CartProductType = ProductType & { cartItemId: number };

@@ -9,7 +9,7 @@ type PropsType = {};
 
 export const Footer: FC<PropsType> = () => {
   return (
-    <Container as="header" maxW="container.lg" margin="0 auto">
+    <Container as="footer" maxW="container.xl" margin="0 auto">
       <Divider />
 
       <Flex

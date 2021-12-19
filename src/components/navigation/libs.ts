@@ -5,10 +5,10 @@ export const NAV_LINKS = [
   },
   {
     title: "Delivery",
-    href: "/delivery",
+    href: "#",
   },
   {
     title: "Contacts",
-    href: "/contacts",
+    href: "#",
   },
 ];

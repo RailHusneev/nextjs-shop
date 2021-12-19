@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Box, Center, Text, Flex, Link } from "@chakra-ui/react";
+import { Box, Center, Text, Flex } from "@chakra-ui/react";
 import { CategoryType } from "@src/types/categoryTypes";
 
 type PropsType = {
